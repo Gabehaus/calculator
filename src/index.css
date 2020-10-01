@@ -1,13 +1,498 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Digital";
+  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7")
+      format("svg");
+}
+
 body {
+  position: relative;
+  overflow: hidden;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: url("https://freecodecampassets.s3.us-east-2.amazonaws.com/calculator+assets/fractal-2880199.jpg");
+  background-size: 220vh;
+}
+
+#whiteBg {
+  position: absolute;
+  background: white;
+  height: 620px;
+  width: 416px;
+  margin-left: 50%;
+  margin-top: 25%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+#navbar {
+  background: #1b1b1f;
+  margin-top: 0px;
+  border-radius: 0px;
+  height: 80px;
+  font-size: 30px;
+}
+
+#navbar * {
+  color: #9365db;
+}
+
+#navElementA {
+  font-size: 30px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#calc-wrapper {
+  position: absolute;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 7px;
+  /*  margin-left: 50%;
+  transform: translateX(-50%);*/
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px 100px 100px;
+  grid-gap: 1px;
+  padding: 0;
+  border-style: none;
+  font-size: 30px;
+}
+
+.num-button {
+  display: flex;
+
+  background: #353b6e;
+  color: black;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#test {
+  color: #74deed;
+  background: #9365db;
+}
+
+#num-grid {
+  grid-column: 1/4;
+  grid-row: 3/7;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px;
+  grid-gap: 1px;
+  padding: 0;
+  border-style: none;
+  width: 158px;
+}
+
+#zero {
+  grid-column: 1/3;
+  grid-row: 4/5;
+  width: 201px;
+  padding: 0;
+  margin: 0;
+  grid-gap: 0px;
+}
+
+.func-button {
+  display: flex;
+  border-style: none;
+  background: #353b6e;
+  color: black;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#equals {
+  grid-column: 4/5;
+  grid-row: 5/7;
+  display: flex;
+  border-style: none;
+  background: #9365db;
+  color: black;
+  width: 100px;
+  height: 201px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#clear {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  display: flex;
+  border-style: none;
+  background: #74deed;
+  color: black;
+  width: 201px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#add {
+  grid-column: 4/5;
+  grid-row: 4/5;
+}
+
+#subtract {
+  grid-column: 4/5;
+  grid-row: 3/4;
+}
+
+#multiply {
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
+
+#divide {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+#screen {
+  grid-column: 1/5;
+  grid-row: 1/2;
+  background: purple;
+  height: 100px;
+  width: 203px;
+}
+
+#forDecimal {
+  font-family: digital;
+  font-size: 1.5em;
+  text-align: right;
+  height: 40px;
+  width: 403px;
+
+  margin: 0;
+  padding: 0;
+  color: #9365db;
+  background: #252243;
+  padding-right: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 40px;
+}
+
+#display {
+  display: block;
+  text-align: right;
+  background: #252243;
+  color: white;
+  width: 403px;
+  height: 60px;
+  font-family: digital;
+  font-size: 1.7em;
+  margin-top: 0px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+/* Extra-extra small devices */
+@media (max-width: 325px) {
+  #navbar {
+    background: #1b1b1f;
+    margin-top: 0px;
+    border-radius: 0px;
+    height: 80px;
+    font-size: 30px;
+    width: 110%;
+  }
+
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: 0%;
+    top: 20px;
+    left: -10px;
+    border-radius: 5px;
+    transform: scale(0.7);
+  }
+
+  #forDecimal {
+    font-family: digital;
+    font-size: 1.5em;
+    text-align: right;
+    height: 43px;
+    width: 403px;
+
+    margin: 0;
+    padding: 0;
+    color: #9365db;
+    background: #252243;
+    padding-right: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+  }
+  #display {
+    display: block;
+    text-align: right;
+    background: #252243;
+    color: white;
+    width: 403px;
+    height: 59px;
+    font-family: digital;
+    font-size: 1.7em;
+    margin-top: -2px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 544px) {
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: -5.5%;
+    margin-top: -14%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    transform: scale(0.7);
+  }
+
+  #forDecimal {
+    font-family: digital;
+    font-size: 1.5em;
+    text-align: right;
+    height: 43px;
+    width: 403px;
+
+    margin: 0;
+    padding: 0;
+    color: #9365db;
+    background: #252243;
+    padding-right: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+  }
+  #display {
+    display: block;
+    text-align: right;
+    background: #252243;
+    color: white;
+    width: 403px;
+    height: 59px;
+    font-family: digital;
+    font-size: 1.7em;
+    margin-top: -2px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+  }
+}
+
+/* Small devices */
+@media (min-width: 544px) {
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+}
+
+/* Medium devices */
+@media (min-width: 768px) {
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+
+  #forDecimal {
+    font-family: digital;
+    font-size: 1.5em;
+    text-align: right;
+    height: 43px;
+    width: 403px;
+
+    margin-top: 0px;
+    padding: 0;
+    color: #9365db;
+    background: #252243;
+    padding-right: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+  }
+
+  #display {
+    display: block;
+    text-align: right;
+    background: #252243;
+    color: white;
+    width: 403px;
+    height: 58px;
+    font-family: digital;
+    font-size: 1.7em;
+    margin-top: -1px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+  }
+}
+
+/* Large devices */
+@media (min-width: 992px) {
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: 50%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+
+  #forDecimal {
+    font-family: digital;
+    font-size: 1.5em;
+    text-align: right;
+    height: 43px;
+    width: 403px;
+
+    margin: 0;
+    padding: 0;
+    color: #9365db;
+    background: #252243;
+    padding-right: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+  }
+
+  #display {
+    display: block;
+    text-align: right;
+    background: #252243;
+    color: white;
+    width: 403px;
+    height: 57px;
+    font-family: digital;
+    font-size: 1.7em;
+    margin-top: 0px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+  }
+
+  #clear {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    display: flex;
+    border-style: none;
+    background: #74deed;
+    color: black;
+    width: 201px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Exrta Large devices */
+@media (min-width: 1200px) {
+  #whiteBg {
+    position: absolute;
+    background: white;
+    height: 620px;
+    width: 416px;
+    margin-left: 50%;
+    margin-top: 25%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+  }
+
+  #forDecimal {
+    font-family: digital;
+    font-size: 1.5em;
+    text-align: right;
+    height: 43px;
+    width: 403px;
+
+    margin: 0;
+    padding: 0;
+    color: #9365db;
+    background: #252243;
+    padding-right: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 40px;
+  }
+
+  #display {
+    display: block;
+    text-align: right;
+    background: #252243;
+    color: white;
+    width: 403px;
+    height: 57px;
+    font-family: digital;
+    font-size: 1.7em;
+    margin-top: 0px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+  }
+
+  #clear {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    display: flex;
+    border-style: none;
+    background: #74deed;
+    color: black;
+    width: 201px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
 }
